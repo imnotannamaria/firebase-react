@@ -7,13 +7,18 @@ import {
   FormLabel,
   Input,
   Text,
+  useToast,
 } from '@chakra-ui/react'
 import { auth } from '../lib/firebase'
+import { useNavigate } from 'react-router-dom'
 
 export function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+
+  const toast = useToast()
+  const navigate = useNavigate()
 
   async function handleLogin(e: FormEvent) {
     e.preventDefault()
@@ -22,6 +27,16 @@ export function Login() {
       .then((userCredential) => {
         const user = userCredential.user
         console.log(user)
+
+        toast({
+          title: 'Login efetuado com sucesso!',
+          description: 'Aguarde uns segundos e você será redirecionado.',
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
+
+        navigate('/')
       })
       .catch((error) => {
         const errorCode = error.code
@@ -31,6 +46,14 @@ export function Login() {
 
         console.log(errorCode)
         console.log(errorMessage)
+
+        toast({
+          title: 'Ocorreu um erro ao fazer login.',
+          description: 'Tente novamente mais tarde.',
+          status: 'error',
+          duration: 9000,
+          isClosable: true,
+        })
       })
   }
 
