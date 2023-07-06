@@ -40,7 +40,7 @@ export function DefaultLayout() {
         <nav>
           <ul>
             <li>
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/">Dashboard</Link>
             </li>
             <li>
               <Link to="/register">Cadastro</Link>
