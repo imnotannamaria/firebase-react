@@ -3,9 +3,13 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import {
   Box,
   Button,
+  Flex,
   FormControl,
   FormLabel,
+  Heading,
   Input,
+  Link,
+  Stack,
   Text,
   useToast,
 } from '@chakra-ui/react'
@@ -58,33 +62,55 @@ export function Login() {
   }
 
   return (
-    <Box p={4} justifyContent="center">
-      <form onSubmit={handleLogin}>
-        <FormControl>
-          <FormLabel htmlFor="email">E-mail</FormLabel>
-          <Input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <FormLabel htmlFor="password">Senha</FormLabel>
-          <Input
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormControl>
-
-        <Text color="red" pt={2}>
-          {error}
-        </Text>
-
-        <Button mt={4} colorScheme="teal" type="submit">
-          Enviar
-        </Button>
-      </form>
-    </Box>
+    <Flex minH={'100vh'} align={'center'} justify={'center'} bg={'gray.400'}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Faça Login</Heading>
+          <Text fontSize={'lg'} color={'gray.600'}>
+            Site para testar funcionalidades do firebase
+          </Text>
+        </Stack>
+        <Box rounded={'lg'} bg={'white'} boxShadow={'lg'} p={8}>
+          <Stack spacing={4}>
+            <FormControl id="email">
+              <FormLabel>Email</FormLabel>
+              <Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormControl>
+            <FormControl id="password">
+              <FormLabel>Senha</FormLabel>
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </FormControl>
+            <Stack spacing={10}>
+              <Stack
+                direction={{ base: 'column', sm: 'row' }}
+                align={'start'}
+                justify={'space-between'}
+              >
+                <Link color={'blue.400'}>Esqueçeu a senha?</Link>
+                <Text>{error}</Text>
+              </Stack>
+              <Button
+                bg={'blue.400'}
+                color={'white'}
+                _hover={{
+                  bg: 'blue.500',
+                }}
+                onClick={handleLogin}
+              >
+                Entrar
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
   )
 }
