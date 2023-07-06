@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router-dom'
-import Header from '../components/Header'
+import { Box } from '@chakra-ui/react'
+import { Header } from '../components/Header'
+import Footer from '../components/Footer'
 
 export function DefaultLayout() {
   return (
-    <div>
+    <Box minHeight="100vh" display="flex" flexDirection="column">
       <Header />
 
-      <Outlet />
+      <Box padding="2rem" flex="1">
+        <Outlet />
+      </Box>
 
-      <hr />
-      <footer>
-        <strong>Footer</strong>
-      </footer>
-    </div>
+      <Footer />
+    </Box>
   )
 }

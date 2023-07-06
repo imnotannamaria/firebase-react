@@ -15,7 +15,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { auth } from '../lib/firebase'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons'
 
-export default function Header() {
+export function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const navigate = useNavigate()
@@ -49,7 +49,7 @@ export default function Header() {
 
   return (
     <>
-      <Box bg={'gray.100'} px={4}>
+      <Box bg={'gray.400'} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
