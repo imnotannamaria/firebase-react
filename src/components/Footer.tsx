@@ -1,6 +1,6 @@
 import { Box, Container, Stack, Text } from '@chakra-ui/react'
 
-export default function SmallWithSocial() {
+export function Footer() {
   return (
     <Box
       bg={'gray.400'}
